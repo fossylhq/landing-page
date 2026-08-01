@@ -136,7 +136,8 @@
   .solution{padding:1.5rem 1.25rem 5rem;}
   h1.section-heading{
     position:relative;
-    font-size:2rem; letter-spacing:-0.02em; line-height:1.15;
+    font-size:clamp(1.2rem, 3.8vw, 2.4rem);
+    letter-spacing:-0.02em; line-height:1.15;
     margin:0 auto 2rem; color:var(--ink);
     display:flex; align-items:center; justify-content:center;
     gap:.65rem;
@@ -151,13 +152,22 @@
     text-align:center;
   }
   h1.section-heading i{
-    font-size:1.75rem; color:var(--ink); line-height:1;
+    font-size:1em !important;
+    width:auto; height:auto;
+    color:var(--ink); line-height:1;
     flex-shrink:0;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
   }
   @media (max-width:640px){
     h1.section-heading{
+      font-size:clamp(1rem, 5vw, 1.8rem);
       gap:.5rem;
       max-width:100%;
+    }
+    h1.section-heading i{
+      font-size:0.95em !important;
     }
     h1.section-heading span{
       max-width:calc(100% - 2rem);
