@@ -1009,6 +1009,7 @@ input:where([type='button'], [type='reset'], [type='submit']),
     background: var(--paper-deep);
     cursor: pointer;
     box-shadow: 0 10px 30px rgba(52, 52, 52, 0.06);
+    margin-bottom: 0;
   }
   .arawa-page .estate-player img {
     display: block;
@@ -1060,16 +1061,16 @@ input:where([type='button'], [type='reset'], [type='submit']),
 
   @media (max-width: 767px) {
     .arawa-page .estate-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      grid-template-rows: 280px 210px 270px;
-      gap: 18px;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+      gap: 0;
     }
-    .arawa-page .estate-architecture { grid-column: 1 / span 2; grid-row: 1; }
-    .arawa-page .estate-cocktail { grid-column: 1; grid-row: 2; }
-    .arawa-page .estate-number { grid-column: 2; grid-row: 2; }
-    .arawa-page .estate-coast { grid-column: 1 / span 2; grid-row: 3; }
+    .arawa-page .estate-architecture { grid-column: 1; grid-row: auto; }
+    .arawa-page .estate-cocktail { grid-column: 1; grid-row: auto; }
+    .arawa-page .estate-number { grid-column: 1; grid-row: auto; }
+    .arawa-page .estate-coast { grid-column: 1; grid-row: auto; }
     .arawa-page .estate-image-wrap { height: calc(100% - 1.5rem); }
-    .arawa-page .estate-player { aspect-ratio: 5 / 6; }
+    .arawa-page .estate-player { aspect-ratio: 4 / 5; margin-bottom: 0; }
   }
 </style>
 <div class="arawa-page min-h-screen overflow-x-clip bg-[var(--eggshell)] font-literata text-[var(--graphite)]" data-kid="1" data-name="page layout container">
@@ -1106,7 +1107,7 @@ input:where([type='button'], [type='reset'], [type='submit']),
                         <p class="text-[17px] leading-[1.7] md:text-[18px]" data-kid="1-2-1-1-1-2-1" data-name="hero description text">
                             A private island hideaway at the edge of the Coral Triangle.
                         </p>
-                        <a class="hero-link link-underline mt-9 inline-flex items-center gap-4 pb-2 text-[10px] uppercase tracking-[.22em] text-[var(--burgundy)]" data-kid="1-2-1-1-1-2-2" data-name="explore estate call-to-action button" href="#estate">
+                        <a class="hero-link link-underline mt-9 inline-flex items-center gap-4 pb-2 text-[10px] uppercase tracking-[.22em] text-[var(--burgundy)]" data-kid="1-2-1-1-1-2-2" data-name="explore estate call-to-action button" href="javascript:void(0)" aria-label="Explore the estate">
                             Explore the estate
                             <span class="font-display text-[18px] leading-none" data-kid="1-2-1-1-1-2-2-1" data-name="arrow icon">
                                 ↗
@@ -1216,7 +1217,7 @@ input:where([type='button'], [type='reset'], [type='submit']),
                     <p class="mt-10 border-t border-[var(--rule)] pt-4 text-[10px] uppercase tracking-[.18em] text-[var(--graphite)]" data-kid="1-2-4-1-1-4" data-name="quarters specs line">
                         Ocean House · 180 m² · 2 guests
                     </p>
-                    <a class="link-underline mt-8 inline-flex items-center gap-4 pb-2 text-[10px] uppercase tracking-[.22em] text-[var(--burgundy)]" data-kid="1-2-4-1-1-5" data-name="see suite call-to-action link" href="#reservations">
+                    <a class="link-underline mt-8 inline-flex items-center gap-4 pb-2 text-[10px] uppercase tracking-[.22em] text-[var(--burgundy)]" data-kid="1-2-4-1-1-5" data-name="see suite call-to-action link" href="javascript:void(0)" aria-label="See the suite">
                         See the suite
                         <span class="font-display text-[18px] leading-none" data-kid="1-2-4-1-1-5-1" data-name="arrow icon">
                             ↗
@@ -1375,7 +1376,7 @@ input:where([type='button'], [type='reset'], [type='submit']),
                     <p class="micro text-[var(--graphite)]/60" data-kid="1-3-1-1-3-1" data-name="footer contact label">
                         Contact
                     </p>
-                    <a class="mt-3 inline-block border-b border-[var(--burgundy-rule)] pb-1 text-[13px] text-[var(--burgundy)]" data-kid="1-3-1-1-3-2" data-name="footer contact email link" href="mailto:stay@arawacove.id">
+                    <a class="mt-3 inline-block border-b border-[var(--burgundy-rule)] pb-1 text-[13px] text-[var(--burgundy)]" data-kid="1-3-1-1-3-2" data-name="footer contact email link" href="javascript:void(0)" aria-label="Contact the reservations team">
                         stay@arawacove.id
                     </a>
                 </div>
@@ -1433,7 +1434,11 @@ input:where([type='button'], [type='reset'], [type='submit']),
     });
 
     var topButton = document.getElementById('back-to-top');
-    if (topButton) topButton.addEventListener('click', function () { window.scrollTo(0, 0); });
+    if (topButton) {
+      topButton.addEventListener('click', function (event) {
+        event.preventDefault();
+      });
+    }
 
     var estatePlayer = document.getElementById('estatePlayer');
     if (estatePlayer) {
